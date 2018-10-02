@@ -1,12 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DestroyByContact : MonoBehaviour {
-	private void OnTriggerEnter(Collider other)
+namespace _Scripts
+{
+	public class DestroyByContact : MonoBehaviour
 	{
-		if(other.tag == "Boundary")
-		Destroy(other.gameObject);
-		Destroy(gameObject);
+
+		public GameObject Explosion;
+	
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.CompareTag("Boundary")) return;
+			Instantiate(Explosion, transform.position, transform.rotation);
+			Destroy(other.gameObject);
+			Destroy(gameObject);
+		}
 	}
 }
