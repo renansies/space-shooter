@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace _Scripts
@@ -17,12 +18,32 @@ namespace _Scripts
 		//GUI Components
 		public Text ScoreText;
 		private int _score;
+		public Text RestartText;
+		public Text GameoverText;
 
+		private bool _gameover;
+		private bool _restart;
+		
 		private void Start()
 		{
+			_gameover = false;
+			_restart = false;
+			RestartText.text = "";
+			GameoverText.text = "";
 			_score = 0;
 			UpdateScore();
 			StartCoroutine(SpawnWaves());
+		}
+
+		private void Update()
+		{
+			if (_restart)
+			{
+				if (Input.GetKeyDown(KeyCode.R))
+				{
+					SceneManager.LoadScene("Main");
+				}
+			}
 		}
 
 		private IEnumerator SpawnWaves()
@@ -39,6 +60,13 @@ namespace _Scripts
 					yield return new WaitForSeconds(SpawnWait);
 				}
 				yield return new WaitForSeconds(WaveWait);
+
+				if (_gameover)
+				{
+					RestartText.text = "Press 'R' for restart!";
+					_restart = true;
+					break;
+				}
 			}
 			// ReSharper disable once IteratorNeverReturns
 		}
@@ -52,6 +80,12 @@ namespace _Scripts
 		private void UpdateScore()
 		{
 			ScoreText.text = "Score: " + _score;
+		}
+
+		public void GameOver()
+		{
+			GameoverText.text = "Game Over!";
+			_gameover = true;
 		}
 	}
 }

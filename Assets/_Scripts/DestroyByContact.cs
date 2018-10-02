@@ -26,6 +26,11 @@ namespace _Scripts
 		private void OnTriggerEnter(Collider other)
 		{
 			if (other.CompareTag("Boundary")) return;
+
+			if (this.CompareTag("Player"))
+			{
+				GameController.GameOver();
+			}
 			Instantiate(Explosion, transform.position, transform.rotation);
 			GameController.AddScore(ScoreValue);
 			Destroy(other.gameObject);
