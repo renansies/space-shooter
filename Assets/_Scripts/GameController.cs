@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Scripts
 {
@@ -12,9 +13,15 @@ namespace _Scripts
 		public float SpawnWait;
 		public float StartWait;
 		public float WaveWait;
+		
+		//GUI Components
+		public Text ScoreText;
+		private int _score;
 
 		private void Start()
 		{
+			_score = 0;
+			UpdateScore();
 			StartCoroutine(SpawnWaves());
 		}
 
@@ -33,6 +40,18 @@ namespace _Scripts
 				}
 				yield return new WaitForSeconds(WaveWait);
 			}
+			// ReSharper disable once IteratorNeverReturns
+		}
+
+		public void AddScore(int newScoreValue)
+		{
+			_score += newScoreValue;
+			UpdateScore();
+		}
+		
+		private void UpdateScore()
+		{
+			ScoreText.text = "Score: " + _score;
 		}
 	}
 }
