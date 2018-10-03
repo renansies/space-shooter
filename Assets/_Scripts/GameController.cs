@@ -8,7 +8,7 @@ namespace _Scripts
 	public class GameController : MonoBehaviour
 	{
 
-		public GameObject Hazard;
+		public GameObject[] Hazards;
 		public Vector3 SpawnValues;
 		public int HazardCount;
 		public float SpawnWait;
@@ -53,10 +53,11 @@ namespace _Scripts
 			{
 				for (var i = 0; i < HazardCount; i++)
 				{
+					var hazard = Hazards[Random.Range(0, Hazards.Length)];
 					var spawnPosition = new Vector3(Random.Range(-SpawnValues.x, +SpawnValues.x), SpawnValues.y,
 						SpawnValues.z);
 					var spawnRotation = Quaternion.identity;
-					Instantiate(Hazard, spawnPosition, spawnRotation);
+					Instantiate(hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds(SpawnWait);
 				}
 				yield return new WaitForSeconds(WaveWait);

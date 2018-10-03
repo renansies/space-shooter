@@ -5,33 +5,38 @@
     <e p="C:\Users\User\Documents\tutorial\SpaceShooter\SpaceShooter" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
-      <e p="Assets\_Complete-Game" t="Include">
-        <e p="Scripts" t="Include">
-          <e p="Done_BGScroller.cs" t="Include" />
-          <e p="Done_DestroyByBoundary.cs" t="Include" />
-          <e p="Done_DestroyByContact.cs" t="Include" />
-          <e p="Done_DestroyByTime.cs" t="Include" />
-          <e p="Done_EvasiveManeuver.cs" t="Include" />
-          <e p="Done_GameController.cs" t="Include" />
-          <e p="Done_Mover.cs" t="Include" />
-          <e p="Done_PlayerController.cs" t="Include" />
-          <e p="Done_RandomRotator.cs" t="Include" />
-          <e p="Done_WeaponController.cs" t="Include" />
-        </e>
-      </e>
-      <e p="Assets\_Scripts" t="Include">
-        <e p="DestroyByBoundary.cs" t="Include" />
-        <e p="DestroyByContact.cs" t="Include" />
-        <e p="Mover.cs" t="Include" />
-        <e p="PlayerController.cs" t="Include" />
-        <e p="RandomRotate.cs" t="Include" />
-      </e>
-      <e p="Assets\TutorialInfo" t="Include">
-        <e p="Scripts" t="Include">
-          <e p="Editor" t="Include">
-            <e p="ReadmeEditor.cs" t="Include" />
+      <e p="Assets" t="Include">
+        <e p="_Complete-Game" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Done_BGScroller.cs" t="Include" />
+            <e p="Done_DestroyByBoundary.cs" t="Include" />
+            <e p="Done_DestroyByContact.cs" t="Include" />
+            <e p="Done_DestroyByTime.cs" t="Include" />
+            <e p="Done_EvasiveManeuver.cs" t="Include" />
+            <e p="Done_GameController.cs" t="Include" />
+            <e p="Done_Mover.cs" t="Include" />
+            <e p="Done_PlayerController.cs" t="Include" />
+            <e p="Done_RandomRotator.cs" t="Include" />
+            <e p="Done_WeaponController.cs" t="Include" />
           </e>
-          <e p="Readme.cs" t="Include" />
+        </e>
+        <e p="_Scripts" t="Include">
+          <e p="BGScroller.cs" t="Include" />
+          <e p="DestroyByBoundary.cs" t="Include" />
+          <e p="DestroyByContact.cs" t="Include" />
+          <e p="DestroyByTime.cs" t="Include" />
+          <e p="GameController.cs" t="Include" />
+          <e p="Mover.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+          <e p="RandomRotate.cs" t="Include" />
+        </e>
+        <e p="TutorialInfo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ReadmeEditor.cs" t="Include" />
+            </e>
+            <e p="Readme.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
