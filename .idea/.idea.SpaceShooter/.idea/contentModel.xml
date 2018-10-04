@@ -29,8 +29,21 @@
           <e p="GameController.cs" t="Include" />
           <e p="Mover.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
+          <e p="Powerup.cs" t="Include" />
           <e p="RandomRotate.cs" t="Include" />
           <e p="WeaponController.cs" t="Include" />
+        </e>
+        <e p="PowerUp" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="CustomizablePowerUp.cs" t="Include" />
+            <e p="PowerUpManager.cs" t="Include" />
+            <e p="PowerUpRotation.cs" t="Include" />
+            <e p="ScaleParticles.cs" t="Include" />
+            <e p="TakeablePowerUp.cs" t="Include" />
+            <e p="Utility" t="Include">
+              <e p="Singleton.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="TutorialInfo" t="Include">
           <e p="Scripts" t="Include">

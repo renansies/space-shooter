@@ -16,7 +16,7 @@ namespace _Scripts
 		public Boundary Boundary;
 
 		public GameObject Shot;
-		public Transform ShotSpawn;
+		public Transform[] ShotSpawns;
 
 		public float FireRate;
 		private float _nextFire;
@@ -26,7 +26,11 @@ namespace _Scripts
 			if (Input.GetButton("Fire1") && Time.time > _nextFire)
 			{
 				_nextFire = Time.time + FireRate;
-				Instantiate(Shot, ShotSpawn.position, ShotSpawn.rotation);
+				foreach (var shotSpawn in ShotSpawns)
+				{
+					Instantiate(Shot, shotSpawn.position, shotSpawn.rotation);
+				}
+				
 			}
 		}
 		

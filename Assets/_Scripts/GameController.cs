@@ -54,7 +54,6 @@ namespace _Scripts
 				for (var i = 0; i < HazardCount; i++)
 				{
 					var hazard = Hazards[Random.Range(0, Hazards.Length)];
-					
 					var spawnPosition = new Vector3(Random.Range(-SpawnValues.x, +SpawnValues.x), SpawnValues.y,
 						SpawnValues.z);
 					var spawnRotation = Quaternion.identity;
