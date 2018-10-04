@@ -6,6 +6,7 @@ namespace _Scripts
 	{
 
 		public float Lifetime;
+
 		private void Start()
 		{
 			Destroy(gameObject, Lifetime);

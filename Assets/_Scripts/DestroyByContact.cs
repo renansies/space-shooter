@@ -7,6 +7,7 @@ namespace _Scripts
 	{
 
 		public GameObject Explosion;
+		public GameObject PlayerExplosion;
 		public GameController GameController;
 		public int ScoreValue;
 
@@ -25,13 +26,19 @@ namespace _Scripts
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.CompareTag("Boundary")) return;
+			if (other.CompareTag("Boundary") || other.CompareTag("Enemy")) return;
 
-			if (this.CompareTag("Player"))
+			if (Explosion != null)
 			{
+				Instantiate(Explosion, transform.position, transform.rotation);
+			}
+
+			if (other.CompareTag("Player"))
+			{
+				Instantiate(PlayerExplosion, transform.position, transform.rotation);
 				GameController.GameOver();
 			}
-			Instantiate(Explosion, transform.position, transform.rotation);
+			
 			GameController.AddScore(ScoreValue);
 			Destroy(other.gameObject);
 			Destroy(gameObject);

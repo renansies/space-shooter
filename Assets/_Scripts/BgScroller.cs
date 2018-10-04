@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 
 namespace _Scripts
 {
-	public class BGScroller : MonoBehaviour
+	public class BgScroller : MonoBehaviour
 	{
 
 		public float ScrollSpeed;
