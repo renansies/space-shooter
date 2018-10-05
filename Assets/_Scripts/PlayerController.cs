@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace _Scripts
 {
@@ -17,6 +18,9 @@ namespace _Scripts
 
 		public GameObject Shot;
 		public Transform[] ShotSpawns;
+
+		public PowerUp ActivePowerUp;
+		private int _powerUpDuration;
 
 		public float FireRate;
 		private float _nextFire;
@@ -53,6 +57,32 @@ namespace _Scripts
 			
 			body.rotation = Quaternion.Euler(0.0f, 0.0f, body.velocity.x * -Tilt);
 		}
-	
+
+		private void ActivatePowerUp()
+		{
+			ActivePowerUp.Activate();
+			StartCoroutine(DeactivatePowerUp(ActivePowerUp.Duration));
+		}
+
+		private IEnumerator DeactivatePowerUp(int seconds)
+		{
+			yield return new WaitForSeconds(seconds);
+			ActivePowerUp.Deactivate();
+			ActivePowerUp = null;
+		}
+
+		public void SetPowerUp(PowerUp powerUp)
+		{
+			if (ActivePowerUp != null)
+			{
+				Debug.Log("Deactivate");
+				StopAllCoroutines();
+				ActivePowerUp.Deactivate();
+			}
+
+			ActivePowerUp = powerUp;
+			ActivatePowerUp();
+			
+		}
 	}
 }

@@ -10,16 +10,22 @@ namespace _Scripts
 		public GameObject PickupEffect;
 
 		private AudioSource _audioSource;
+		protected GameObject Player;
+		private PlayerController _controller;
+		public int Duration;
 
 		private void Start()
 		{
 			_audioSource = GetComponent<AudioSource>();
 		}
 
-		private void OnTriggerEnter(Collider other)
+		protected void OnTriggerEnter(Collider other)
 		{
 			if (other.CompareTag("Player"))
 			{
+				Player = other.gameObject;
+				_controller = Player.GetComponent<PlayerController>();
+				_controller.SetPowerUp(this);
 				StartCoroutine(Pickup());
 			}
 		}
@@ -37,7 +43,15 @@ namespace _Scripts
 			
 			Destroy(clone);
 			Destroy(this.gameObject);
+		}
+
+		public virtual void Activate()
+		{
 			
+		}
+
+		public virtual void Deactivate()
+		{
 			
 		}
 	}
