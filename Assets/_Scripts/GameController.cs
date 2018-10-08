@@ -57,39 +57,37 @@ namespace _Scripts
 			yield return new WaitForSeconds(StartWait);
 			while (true)
 			{
-				if (!_bossApears)
-				{
-					if (_wavesCount > 0)
-					{
-						_bossApears = true;
-						_wavesCount = 0;
-						var bossSpawn = new Vector3(0, SpawnValues.y, SpawnValues.z);
-						var bossRotation = Quaternion.identity;
-						Instantiate(Boss, bossSpawn, bossRotation);
-					}
-					
-					for (var i = 0; i < HazardCount; i++)
-					{
-						var hazard = Hazards[Random.Range(0, Hazards.Length)];
-						var spawnPosition = new Vector3(Random.Range(-SpawnValues.x, +SpawnValues.x), SpawnValues.y,
-							SpawnValues.z);
-						var spawnRotation = Quaternion.identity;
-						Instantiate(hazard, spawnPosition, spawnRotation);
-						yield return new WaitForSeconds(SpawnWait);
-					}
-
-					_wavesCount++;
-					
-					yield return new WaitForSeconds(WaveWait);
-				}
 				
-				yield return new WaitForSeconds(WaveWait);
-
-				if (!GameObject.FindGameObjectWithTag("Boss"))
-				{
+				
+				if (_wavesCount > 0)
 					_bossApears = true;
-				}
 				
+				if(_bossApears && _wavesCount > 0)
+				{
+					_wavesCount = 0;
+					var bossSpawn = new Vector3(0, SpawnValues.y, SpawnValues.z);
+					var bossRotation = Quaternion.identity;
+					yield return new WaitForSeconds(SpawnWait);
+					Instantiate(Boss, bossSpawn, bossRotation);
+					yield return new WaitForSeconds(SpawnWait);
+				}
+				else
+				{
+					if (!_bossApears)
+					{
+						for (var i = 0; i < HazardCount; i++)
+						{
+							var hazard = Hazards[Random.Range(0, Hazards.Length)];
+							var spawnPosition = new Vector3(Random.Range(-SpawnValues.x, +SpawnValues.x), SpawnValues.y,
+								SpawnValues.z);
+							var spawnRotation = Quaternion.identity;
+							Instantiate(hazard, spawnPosition, spawnRotation);
+							yield return new WaitForSeconds(SpawnWait);
+						}
+
+						_wavesCount++;
+					}
+				}
 
 				if (_gameover)
 				{
@@ -97,6 +95,8 @@ namespace _Scripts
 					_restart = true;
 					break;
 				}
+
+				yield return null;
 			}
 			// ReSharper disable once IteratorNeverReturns
 		}
