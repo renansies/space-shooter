@@ -26,7 +26,7 @@ namespace _Scripts
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.CompareTag("Boundary") || other.CompareTag("Enemy") || other.CompareTag("PowerUp")) return;
+			if (other.CompareTag("Boundary") || other.CompareTag("Enemy") || other.CompareTag("PowerUp") || other.CompareTag("Shield")) return;
 
 			if (Explosion != null)
 			{
