@@ -25,14 +25,21 @@ namespace _Scripts
 		public float FireRate;
 		private float _nextFire;
 
+		public bool CanTripleShot = false;
+
 		void Update()
 		{
 			if (Input.GetButton("Fire1") && Time.time > _nextFire)
 			{
 				_nextFire = Time.time + FireRate;
-				foreach (var shotSpawn in ShotSpawns)
+				if(CanTripleShot)
+					foreach (var shotSpawn in ShotSpawns)
+					{
+						Instantiate(Shot, shotSpawn.position, shotSpawn.rotation);
+					}
+				else
 				{
-					Instantiate(Shot, shotSpawn.position, shotSpawn.rotation);
+					Instantiate(Shot, ShotSpawns[0].position, ShotSpawns[0].rotation);
 				}
 				
 			}

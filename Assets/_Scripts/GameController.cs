@@ -21,12 +21,13 @@ namespace _Scripts
 		private int _score;
 		public Text RestartText;
 		public Text GameoverText;
-
+		
 		private bool _gameover;
 		private bool _restart;
 
 		private int _wavesCount;
 		private bool _bossApears;
+		
 		
 		private void Start()
 		{
@@ -59,10 +60,10 @@ namespace _Scripts
 			{
 				
 				
-				if (_wavesCount > 0)
+				if (_wavesCount > 9)
 					_bossApears = true;
 				
-				if(_bossApears && _wavesCount > 0)
+				if(_bossApears && _wavesCount > 9)
 				{
 					_wavesCount = 0;
 					var bossSpawn = new Vector3(0, SpawnValues.y, SpawnValues.z);
@@ -86,6 +87,7 @@ namespace _Scripts
 						}
 
 						_wavesCount++;
+						yield return new WaitForSeconds(WaveWait);
 					}
 				}
 

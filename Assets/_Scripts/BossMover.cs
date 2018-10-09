@@ -5,17 +5,18 @@ namespace _Scripts
 {
 	public class BossMover : MonoBehaviour {
 
-		// Use this for initialization
-		void Start () {
-			
-		}
-
-		IEnumerator Move()
-		{
-			GetComponent<Rigidbody>().velocity = transform.forward * -10;
-			yield return new WaitForSeconds(2);
-			GetComponent<Rigidbody>().velocity = Vector3.zero;
-		}
+		public float Speed;
+		public GameObject Target;
 		
+		
+		private void Start()
+		{
+			var distance = Vector3.Distance(transform.position, Target.transform.position);
+
+			if (distance > 0)
+			{
+				transform.Translate(Speed * Time.deltaTime, 0, 0);
+			}
+		}
 	}
 }

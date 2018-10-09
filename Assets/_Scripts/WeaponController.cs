@@ -6,7 +6,7 @@ namespace _Scripts
 	public class WeaponController : MonoBehaviour
 	{
 		public GameObject Shot;
-		public Transform ShotSpawn;
+		public Transform[] ShotSpawns;
 		public float FireRate;
 		public float Delay;
 
@@ -22,7 +22,11 @@ namespace _Scripts
 
 		private void Fire()
 		{
-			Instantiate(Shot, ShotSpawn.position, ShotSpawn.rotation);
+			foreach (var shotSpawn in ShotSpawns)
+			{
+				Instantiate(Shot, shotSpawn.position, shotSpawn.rotation);
+			}
+			
 			_audioSource.Play();
 		}
 	}

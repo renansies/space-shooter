@@ -34,7 +34,6 @@ namespace _Scripts
 		{
 			_audioSource.Play();
 			var clone = Instantiate(PickupEffect, transform.position, transform.rotation);
-			Debug.Log("Power up picked up!");
 
 			GetComponent<Collider>().enabled = false;
 			GetComponentInChildren<MeshRenderer>().enabled = false;
