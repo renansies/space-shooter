@@ -10,6 +10,7 @@ namespace _Scripts
 
 		public GameObject[] Hazards;
 		public GameObject Boss;
+		public BossPath BossPath;
 		public Vector3 SpawnValues;
 		public int HazardCount;
 		public float SpawnWait;
@@ -37,6 +38,7 @@ namespace _Scripts
 			_wavesCount = 0;
 			RestartText.text = "";
 			GameoverText.text = "";
+			Boss.GetComponent<BossMover>().Path = BossPath;
 			_score = 0;
 			UpdateScore();
 			StartCoroutine(SpawnWaves());
@@ -44,12 +46,10 @@ namespace _Scripts
 
 		private void Update()
 		{
-			if (_restart)
+			if (!_restart) return;
+			if (Input.GetKeyDown(KeyCode.R))
 			{
-				if (Input.GetKeyDown(KeyCode.R))
-				{
-					SceneManager.LoadScene("Main");
-				}
+				SceneManager.LoadScene("Main");
 			}
 		}
 

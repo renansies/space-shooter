@@ -23,6 +23,7 @@
         <e p="_Scripts" t="Include">
           <e p="BGScroller.cs" t="Include" />
           <e p="BossMover.cs" t="Include" />
+          <e p="BossPath.cs" t="Include" />
           <e p="BossWeaponController.cs" t="Include" />
           <e p="DestroyByBoundary.cs" t="Include" />
           <e p="DestroyByContact.cs" t="Include" />
